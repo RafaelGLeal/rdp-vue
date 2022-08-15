@@ -1,52 +1,28 @@
 <template>
-  <nav class="navbar">
-    <router-link to="/" class="navbar__brand">
-      <img :src="logo" alt="" />
-    </router-link>
-
-    <div class="navbar__toggle" @click="toggleMenu">
-      <BtnActive v-if="!active" />
-      <BtnToggled v-else />
-    </div>
-
-    <transition>
-      <div :class="[active ? menuMobile : menuMobileActive]">
-        <router-link to="/vips">Vip</router-link>
-        <router-link to="/position">Cargos</router-link>
-        <router-link to="/about">Sobre</router-link>
-      </div>
-    </transition>
-  </nav>
-  <router-view />
+  <NavBarMain />
 </template>
 
 <script>
 import "@/styles/reset.css";
 import "@/styles/normalize.css";
-import logoRDP from "@/assets/ws.svg";
-import BtnActive from "./components/toggle/BtnActive.vue";
-import BtnToggled from "./components/toggle/BtnToggled.vue";
+import NavBarMain from "./components/NavBarMain.vue";
+import EventServices from "./services/EventService";
 export default {
   name: "App",
   components: {
-    BtnActive,
-    BtnToggled,
+    NavBarMain,
   },
-
-  data() {
-    return {
-      active: false,
-      logo: logoRDP,
-      menuMobile: "navbar__menu",
-      menuMobileActive: "navbar__menu.active",
-
-      menuDesktop: "navbar__menuDesk",
-    };
-  },
-  methods: {
-    toggleMenu: function (event) {
-      return (this.active = !this.active);
-    },
+  created() {
+    EventServices.getEvents().then((response) => {
+      localStorage.setItem(
+        "member_count",
+        JSON.stringify(response.data.approximate_member_count)
+      );
+      localStorage.setItem(
+        "presence_count",
+        JSON.stringify(response.data.approximate_presence_count)
+      );
+    });
   },
 };
 </script>
@@ -58,13 +34,12 @@ export default {
   --blue: #a1eeff;
   --white: #e2e2e2;
   --white-transparent: #ddddddab;
-  --font-heading: "Bespoke Slab", sans-serif;
-  --font-body: "Poppins", sans-serif;
+  --font-heading: "Cinzel", serif;
+  --font-body: "Raleway", sans-serif;
   --f-size-sm: 1.5em;
   --f-size-md: 2.25em;
   --f-size-lg: 3.375em;
   --transition: 0.5s cubic-bezier(0.365, 0.183, 0.153, 0.846);
-  --zindex-overlay: -30;
 }
 
 * {
@@ -74,7 +49,7 @@ export default {
 }
 
 body {
-  font-size: 15px;
+  font-size: 16px;
   margin: 0 auto;
   background-color: var(--dark-blue);
   color: var(--white);
@@ -86,7 +61,7 @@ body {
     width: 100%;
     height: 100%;
     background-image: url("@/assets/overlay.png");
-    z-index: var(--zindex-overlay);
+    z-index: -40;
     opacity: 0.3;
   }
   p,
@@ -106,46 +81,75 @@ body {
   h6 {
     font-family: var(--font-heading);
   }
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  padding: 2em;
-  &__brand {
-    width: 70px;
-    img {
-      max-width: 100%;
-    }
-  }
-
-  &__menu {
-    align-items: center;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    width: 100%;
-    display: flex;
-    gap: 2em;
-    padding: 2em;
-    flex-direction: column;
-  }
-  a {
+  i {
     color: var(--white);
+  }
+}
+header {
+  width: 100%;
+  z-index: 200;
+  position: absolute;
+}
+.btn {
+  border: 1px solid var(--white);
+  cursor: pointer;
+  font-family: var(--font-body);
+  padding: 0.8em 1em;
+  display: flex;
+  position: relative;
+  transition: var(--transition);
+  overflow: hidden;
+  background: transparent;
+  span {
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-right: 0.3em;
+    transition: var(--transition);
+  }
+  .bx-arrow-back {
+    transform: rotate(-140deg) translateX(-2px);
+    transition: var(--transition);
+  }
+  span:nth-child(2) {
+    position: absolute;
+    transform: translateY(-200%);
+    transition: var(--transition);
+  }
+  &:hover {
+    background: #afafaf;
+    background: -moz-radial-gradient(top right, #d4d4d411, #11060626);
+    background: radial-gradient(to bottom left, #d4d4d411, #11060626);
+    background: -webkit-radial-gradient(top right, #d4d4d411, #11060626);
+    transition: var(--transition);
 
-    &.router-link-exact-active {
-      color: #42b983;
+    span:nth-child(2) {
+      position: absolute;
+      transform: translateY(0%);
+      transition: var(--transition);
+    }
+    span:nth-child(1) {
+      transform: translateY(200%);
+      transition: var(--transition);
+    }
+    .bx-arrow-back {
+      transform: rotate(-180deg) translateX(-2px);
+      transition: var(--transition);
     }
   }
 }
-@media (min-width: 600px) {
-  .navbar {
-    background-color: red;
-    &__brand {
-      position: relative;
-    }
+.section-title {
+  font-size: var(--f-size-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  span {
+    font-weight: 400;
+    font-family: var(--font-heading);
+  }
+  span:nth-child(1) {
+    color: var(--dark-red);
   }
 }
 .v-enter-active,

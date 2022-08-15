@@ -1,12 +1,15 @@
 <template>
-  <button class="hamburger" type="button">
+  <button :class="toggle">
     <span class="hamburger-box"> </span>
   </button>
 </template>
 
 <script>
 export default {
-  name: "BtnActive",
+  name: "ToggleMenu",
+  props: {
+    toggle: String,
+  },
 };
 </script>
 
@@ -15,45 +18,20 @@ export default {
   width: 50px;
   height: 50px;
   position: relative;
-  cursor: pointer;
   transition: var(--transition);
-
-  &.toggled {
-    transition: var(--transition);
-    &:hover .hamburger-box {
-      &::after,
-      &::before {
-        top: 0;
-        transition: var(--transition);
-      }
-    }
-    .hamburger-box {
-      background-color: transparent;
-      transition: var(--transition);
-
-      &::after {
-        transform: rotate(30deg);
-        top: 0;
-        transition: var(--transition);
-      }
-      &::before {
-        top: 0;
-        transform: rotate(-30deg);
-        transition: var(--transition);
-      }
-    }
-  }
+  z-index: 100;
+  cursor: pointer;
   &-box {
     background-color: var(--white);
-    width: 100%;
-    height: 4px;
+    width: 50px;
+    height: 2px;
     position: absolute;
-    left: 0;
+    right: 0em;
     transition: var(--transition);
     &::before {
       content: "";
       width: 100%;
-      height: 4px;
+      height: 2px;
       position: absolute;
       background-color: var(--white);
       top: -14px;
@@ -63,7 +41,7 @@ export default {
     &::after {
       content: "";
       width: 100%;
-      height: 4px;
+      height: 2px;
       position: absolute;
       background-color: var(--white);
       top: 14px;
@@ -71,16 +49,44 @@ export default {
       transition: var(--transition);
     }
   }
+  &:hover {
+    .hamburger-box {
+      background-color: transparent;
+      transition: var(--transition);
+      &::before {
+        transition: var(--transition);
+        top: -8px;
+      }
+      &::after {
+        transition: var(--transition);
+        top: 8px;
+      }
+    }
+  }
+}
+.toggled {
+  transition: var(--transition);
+  z-index: 50;
   &:hover .hamburger-box {
+    &::after,
+    &::before {
+      top: 0;
+      transition: var(--transition);
+    }
+  }
+  .hamburger-box {
     background-color: transparent;
     transition: var(--transition);
-    &::before {
-      transition: var(--transition);
-      top: -8px;
-    }
+
     &::after {
+      transform: rotate(30deg);
+      top: 0;
       transition: var(--transition);
-      top: 8px;
+    }
+    &::before {
+      top: 0;
+      transform: rotate(-30deg);
+      transition: var(--transition);
     }
   }
 }
