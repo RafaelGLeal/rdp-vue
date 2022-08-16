@@ -21,6 +21,14 @@
 </template>
 
 <script>
+window.onscroll = () => {
+  const navBar = document.querySelector(".navbar");
+  if (document.body > 50 || document.documentElement.scrollTop > 50) {
+    navBar.style.padding = "1em 2em";
+  } else {
+    navBar.style.padding = "2em 2em";
+  }
+};
 import BtnToggleMenu from "../BtnToggleMenu.vue";
 export default {
   name: "NavBarMobile",
@@ -50,6 +58,7 @@ export default {
   position: fixed;
   padding: 2em;
   z-index: 2;
+  transition: var(--transition);
   &__brand {
     width: 70px;
     transform: translateY(7px);

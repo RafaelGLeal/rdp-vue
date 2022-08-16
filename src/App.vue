@@ -50,6 +50,7 @@ export default {
 
 body {
   font-size: 16px;
+  min-width: 380px;
   margin: 0 auto;
   background-color: var(--dark-blue);
   color: var(--white);
@@ -144,6 +145,14 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  &.vip {
+    span {
+      color: var(--dark-red);
+    }
+    span:nth-child(1) {
+      color: var(--white);
+    }
+  }
   span {
     font-weight: 400;
     font-family: var(--font-heading);
@@ -162,5 +171,22 @@ header {
 .v-leave-to {
   opacity: 0;
   transform: translateX(-200px);
+}
+@keyframes cardIcon {
+  0% {
+    transform: translateX(-2px);
+  }
+  25% {
+    transform: translateX(2px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(1deg);
+  }
+  75% {
+    transform: translateX(0px) rotate(2deg);
+  }
+  100% {
+    transform: translateX(-2px);
+  }
 }
 </style>

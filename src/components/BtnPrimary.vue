@@ -3,7 +3,6 @@
     <button class="btn">
       <span>{{ name }}</span>
       <span>{{ name }}</span>
-
       <i :class="icon"> </i>
     </button>
   </a>

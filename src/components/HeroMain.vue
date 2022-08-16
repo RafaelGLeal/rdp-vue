@@ -71,6 +71,11 @@ export default {
     z-index: -40 !important;
     opacity: 0.3;
   }
+  @media (min-width: 680px) {
+    &::before {
+      background-image: url(@/assets/bgHome.png);
+    }
+  }
   &::after {
     content: "";
     position: absolute;
@@ -104,6 +109,11 @@ export default {
     align-items: center;
     flex-direction: column;
     gap: 1em;
+    @media (min-width: 840px) {
+      flex-direction: row;
+      gap: 5em;
+      justify-content: space-around;
+    }
     &__item {
       flex: 1;
       width: 100%;

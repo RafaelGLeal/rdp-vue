@@ -16,7 +16,6 @@ export default {
 <style lang="scss">
 .hamburger {
   width: 50px;
-  height: 50px;
   position: relative;
   transition: var(--transition);
   z-index: 100;
@@ -34,7 +33,7 @@ export default {
       height: 2px;
       position: absolute;
       background-color: var(--white);
-      top: -14px;
+      top: -11px;
       left: 0;
       transition: var(--transition);
     }
@@ -44,7 +43,7 @@ export default {
       height: 2px;
       position: absolute;
       background-color: var(--white);
-      top: 14px;
+      top: 11px;
       left: 0;
       transition: var(--transition);
     }

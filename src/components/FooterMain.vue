@@ -44,7 +44,7 @@ footer {
     right: 50%;
     transform: translate(-50%, 30%);
     z-index: -1;
-    filter: blur(50px);
+    filter: blur(70px);
     background-color: var(--dark-red);
   }
   a {
