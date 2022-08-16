@@ -8,7 +8,7 @@
         <router-link to="/">Início</router-link>
         <router-link to="/vips">Vip</router-link>
         <router-link to="/position">Cargos</router-link>
-        <router-link to="/vips">Fivem</router-link>
+        <router-link to="/fivem">Fivem</router-link>
         <router-link to="/about">Sobre</router-link>
       </div>
     </transition>

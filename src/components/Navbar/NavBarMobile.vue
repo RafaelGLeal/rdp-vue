@@ -12,7 +12,7 @@
         <router-link @click="toggleMenu" to="/">Início</router-link>
         <router-link @click="toggleMenu" to="/vips">Vip</router-link>
         <router-link @click="toggleMenu" to="/position">Cargos</router-link>
-        <router-link @click="toggleMenu" to="/vips">Fivem</router-link>
+        <router-link @click="toggleMenu" to="/fivem">Fivem</router-link>
         <router-link @click="toggleMenu" to="/about">Sobre</router-link>
       </div>
     </transition>

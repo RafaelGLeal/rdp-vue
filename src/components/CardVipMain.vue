@@ -65,7 +65,8 @@ export default {
   &.diamond {
     &::before {
       background-image: url(@/assets/223.png);
-      top: -25%;
+      top: -22%;
+      right: -33%;
     }
   }
   &::before {
@@ -80,7 +81,6 @@ export default {
     background-repeat: no-repeat;
     background-position-x: right;
     background-position-y: top;
-    animation: cardIcon 5s linear infinite;
   }
   @media (min-width: 440px) {
     &.diamond::before {
