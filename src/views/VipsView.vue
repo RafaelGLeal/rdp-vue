@@ -1,6 +1,6 @@
 <template>
   <section class="vips">
-    <h3 class="section-title vip">
+    <h3 class="section-title vip" data-aos="fade-up">
       <span>torne-se</span>
       <span>vip</span>
     </h3>
@@ -8,8 +8,8 @@
       Torne-se Vip na comunindade mais quente do discord. Apoie o servidor e
       receba privilégios exclusivos.
     </p>
-    <CardMain cardList="premium" />
-    <CardMain cardList="diamond" />
+    <CardMain cardName="premium" />
+    <CardMain cardName="diamond" />
   </section>
   <FooterMain />
 </template>
@@ -25,7 +25,7 @@ export default {
 </script>
 <style lang="scss">
 .vips {
-  width: 100%;
+  max-width: 100%;
   min-height: 100vh;
   display: grid;
   place-items: center;
@@ -36,22 +36,12 @@ export default {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(@/assets/vipRedBG.png);
+    background-image: url(@/assets/vipBgRight.png);
     background-repeat: no-repeat;
     background-size: 30%;
-    top: 60vh;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url(@/assets/vipBlueBG.png);
-    background-repeat: no-repeat;
-    background-size: 20%;
-    bottom: -10vh;
-    background-position-x: right;
-    background-position-y: bottom;
+    top: 55vh;
+    z-index: -1;
+    opacity: 0.8;
   }
   h3 {
     padding-top: 30vh;
@@ -59,9 +49,9 @@ export default {
   p {
     font-weight: 500;
     text-align: center;
-    line-height: 1.5em;
+    line-height: 2.6em;
     margin: 4em auto 10em;
-    width: 90%;
+    width: 80%;
   }
 }
 </style>

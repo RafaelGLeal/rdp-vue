@@ -57,7 +57,7 @@ export default {
   height: fit-content;
   position: fixed;
   padding: 2em;
-  z-index: 2;
+  z-index: 999;
   transition: var(--transition);
   &__brand {
     width: 70px;
@@ -88,6 +88,7 @@ export default {
       z-index: -3;
     }
     &.disabled {
+      visibility: hidden;
       transform: translateX(-100%);
       transition: var(--transition);
     }

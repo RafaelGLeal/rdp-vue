@@ -7,20 +7,20 @@
     </section>
     <section class="stats">
       <div class="stats-container">
-        <div class="stats-container__item">
+        <div class="stats-container__item" data-aos="fade-down">
           <span>{{ member_count }}</span>
           <span>Membros</span>
         </div>
-        <div class="stats-container__item">
+        <div class="stats-container__item" data-aos="fade-down">
           <span>2</span>
           <span>Donos</span>
         </div>
-        <div class="stats-container__item">
+        <div class="stats-container__item" data-aos="fade-down">
           <span>{{ presence_count }}</span>
           <span>Online</span>
         </div>
       </div>
-      <h3 class="section-title">
+      <h3 class="section-title" data-aos="fade-up">
         <span>perca-se</span>
         <span>na comunidade</span>
       </h3>
@@ -60,6 +60,7 @@ export default {
   position: relative;
   z-index: 1;
   overflow: hidden;
+  margin: 0 auto;
   &::before {
     content: "";
     position: absolute;
@@ -79,7 +80,7 @@ export default {
   &::after {
     content: "";
     position: absolute;
-    width: 120%;
+    width: 100%;
     height: 80px;
     background-color: var(--dark-blue);
     bottom: -30px;
@@ -98,10 +99,25 @@ export default {
   }
 }
 .stats {
-  width: 100%;
+  max-width: 100%;
   margin: 3em auto 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(@/assets/heroStatsBgMobile.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-size: 30%;
+    background-position-y: bottom;
+    bottom: 30%;
+    z-index: -100;
+  }
   &-container {
     margin: 0 auto;
     display: flex;
@@ -109,6 +125,7 @@ export default {
     align-items: center;
     flex-direction: column;
     gap: 1em;
+    max-width: 100%;
     @media (min-width: 840px) {
       flex-direction: row;
       gap: 5em;
@@ -137,13 +154,17 @@ export default {
   }
   .section-title {
     margin: 4em 0 2em;
+    overflow: hidden;
   }
   p {
     font-weight: 500;
     text-align: center;
-    line-height: 1.5em;
+    line-height: 2.6em;
     margin-bottom: 3em;
-    width: 90%;
+    width: 80%;
   }
+}
+main {
+  margin-bottom: 6em;
 }
 </style>

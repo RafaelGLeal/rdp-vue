@@ -1,131 +1,156 @@
 <template>
-  <div :class="cardList === 'premium' ? 'card' : 'card diamond'">
-    <h4 class="card-title">
-      <span>{{ cardList }}</span>
+  <div
+    :class="cardName === 'premium' ? 'card' : 'card diamond'"
+    data-aos="zoom-out-left"
+    data-aos-duration="700"
+  >
+    <h4
+      :class="cardName === 'premium' ? 'card-title' : 'card-title diamond'"
+      data-aos="zoom-out-left"
+      data-aos-delay="200"
+      data-aos-duration="600"
+    >
+      <span>{{ cardName }}</span>
     </h4>
     <div class="card-box">
       <h5 class="card-box__title">
         <span>Vantagens</span>
       </h5>
-
-      <ul v-if="cardList === 'premium'">
-        <li v-for="data in dataList.premium" :key="dataList[data.id]">
-          {{ data.benefit }}
+      <ul>
+        <li v-for="cardName in getCardName" :key="getCardName[cardName.id]">
+          {{ cardName.benefit }}
         </li>
       </ul>
-      <ul v-if="cardList === 'diamond'">
-        <li v-for="data in dataList.diamond" :key="dataList[data.id]">
-          {{ data.benefit }}
-        </li>
-      </ul>
-      <ul v-if="cardList === 'lord'">
-        <li v-for="data in dataList.lord" :key="dataList[data.id]">
-          {{ data.benefit }}
-        </li>
-      </ul>
-      <ul v-if="cardList === 'posse'">
-        <li v-for="data in dataList.posse" :key="dataList[data.id]">
-          {{ data.benefit }}
-        </li>
-      </ul>
-      <span v-if="cardList === 'premium'"
+      <span v-if="cardName === 'premium'"
         >R${{ dataList.prices[0].price }}</span
       >
-      <span v-if="cardList === 'diamond'"
+      <span v-if="cardName === 'diamond'"
         >R${{ dataList.prices[1].price }}</span
       >
-      <span v-if="cardList === 'lord'">R${{ dataList.prices[2].price }}</span>
-      <span v-if="cardList === 'posse'">R${{ dataList.prices[3].price }}</span>
     </div>
   </div>
 </template>
 
 <script>
-import data from "@/services/data.json";
+import dataJson from "@/services/data.json";
 
 export default {
   name: "CarMain",
   props: {
-    cardList: String,
+    cardName: String,
   },
   data() {
     return {
       cardType: null,
-      dataList: data,
+      dataList: dataJson,
     };
+  },
+  computed: {
+    getCardName() {
+      return this.cardName === "premium"
+        ? this.dataList.premium
+        : this.dataList.diamond;
+    },
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
   position: relative;
-  width: 75%;
+  max-width: 80%;
   margin: 4em 0;
-  &.diamond {
-    &::before {
-      background-image: url(@/assets/223.png);
-      top: -22%;
-      right: -33%;
-    }
-  }
-  &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url(@/assets/23.png);
-    top: -100px;
-    right: -30%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    background-position-y: top;
-  }
-  @media (min-width: 440px) {
-    &.diamond::before {
-      top: -130px;
-    }
-    &::before {
-      top: -130px;
-    }
-  }
-  @media (min-width: 525px) {
-    &::before {
-      top: -150px;
-    }
-    &.diamond::before {
-      top: -150px;
-    }
-  }
-  @media (min-width: 840px) {
-    &::before {
-      top: -160px;
-      right: -25%;
-    }
-    &.diamond::before {
-      top: -160px;
-      right: -25%;
-    }
-  }
+  border-top-right-radius: 1px;
   &-title span {
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 5px;
     font-size: var(--f-size-sm);
+    font-family: var(--font-heading);
+  }
+  &-title {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 180px;
+      background-image: url(@/assets/red-diamond.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      right: -30%;
+      z-index: 1;
+      top: -70px;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 180px;
+      background-color: var(--dark-red);
+      right: -30%;
+      z-index: 1;
+      top: -60px;
+      filter: blur(50px) opacity(0.3);
+    }
+    &.diamond {
+      &::before {
+        background-image: url(@/assets/blue-diamond.png);
+      }
+      &::after {
+        background-color: var(--blue);
+      }
+    }
+    @media (min-width: 440px) {
+      &.diamond::before {
+        right: -25%;
+      }
+      &::before {
+        right: -25%;
+      }
+    }
+    @media (min-width: 525px) {
+      &::before {
+        right: -15%;
+      }
+      &.diamond::before {
+        right: -15%;
+      }
+    }
+    @media (min-width: 840px) {
+      &::before {
+        right: -10%;
+      }
+      &.diamond::before {
+        right: -10%;
+      }
+    }
   }
   &-box {
     width: 100%;
-    margin: 1em auto 0;
+    margin: 0.1em auto 0;
     background: #afafaf;
     background: -moz-radial-gradient(top right, #d4d4d411, #11060626);
     background: radial-gradient(to bottom left, #d4d4d411, #11060626);
     background: -webkit-radial-gradient(top right, #d4d4d411, #11060626);
     display: flex;
+    border: 1px solid #afafaf31;
     flex-direction: column;
     align-items: center;
-    padding: 2em 3em;
+    padding: 2em 4em 1em 4em;
     position: relative;
+    z-index: -1;
+    // &::before {
+    //   content: "Diamond";
+    //   font-family: var(--font-heading);
+    //   font-weight: 300;
+    //   bottom: -80px;
+    //   left: -100px;
+    //   opacity: 0.1;
+    //   position: absolute;
+    //   text-transform: uppercase;
+    //   font-size: 5em;
+    // }
     &__title {
       font-size: 1.2em;
       align-self: flex-start;
@@ -144,6 +169,7 @@ export default {
       list-style: disc;
       font-weight: 400;
       font-size: 0.9em;
+      line-height: 1.6em;
     }
     span {
       align-self: flex-end;

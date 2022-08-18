@@ -19,9 +19,10 @@ export default {
 footer {
   display: flex;
   width: 80%;
-  margin: 8em auto 2em;
+  margin: 8em auto 1em;
   justify-content: space-between;
   position: relative;
+  z-index: 100;
   .brand span {
     font-weight: 500;
     font-family: var(--font-heading);
@@ -33,19 +34,20 @@ footer {
     height: 1px;
     background-color: var(--white-transparent);
     opacity: 0.5;
-    bottom: -1em;
+    bottom: -0.1em;
+    z-index: 100;
   }
   &::after {
     content: "";
     position: absolute;
     width: 50%;
-    height: 200%;
-    left: 50%;
-    right: 50%;
-    transform: translate(-50%, 30%);
+    height: 100%;
+    left: 25%;
+    right: 25%;
     z-index: -1;
     filter: blur(70px);
     background-color: var(--dark-red);
+    z-index: 100;
   }
   a {
     transition: var(--transition);

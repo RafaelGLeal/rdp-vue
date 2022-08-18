@@ -16,9 +16,10 @@ export default {
 <style lang="scss">
 .hamburger {
   width: 50px;
+  height: 50px;
+  padding: 0.5em;
   position: relative;
   transition: var(--transition);
-  z-index: 100;
   cursor: pointer;
   &-box {
     background-color: var(--white);

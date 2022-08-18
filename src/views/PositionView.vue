@@ -1,12 +1,12 @@
 <template>
   <section class="vips">
-    <h3 class="section-title vip">
+    <h3 class="section-title vip" data-aos="fade-up">
       <span>obtenha</span>
       <span>cargos</span>
     </h3>
     <p>Obtenha os melhores cargos e sinta o que é uma vida de Lord.</p>
-    <CardMain cardList="lord" />
-    <CardMain cardList="posse" />
+    <CardMain cardName="lord" />
+    <CardMain cardName="posse" />
   </section>
   <FooterMain />
 </template>
@@ -20,7 +20,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .vips {
   width: 100%;
   min-height: 100vh;
@@ -37,18 +37,7 @@ export default {
     background-repeat: no-repeat;
     background-size: 30%;
     top: 60vh;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url(@/assets/vipBlueBG.png);
-    background-repeat: no-repeat;
-    background-size: 20%;
-    bottom: -10vh;
-    background-position-x: right;
-    background-position-y: bottom;
+    z-index: -1;
   }
   h3 {
     padding-top: 30vh;
@@ -56,9 +45,9 @@ export default {
   p {
     font-weight: 500;
     text-align: center;
-    line-height: 1.5em;
+    line-height: 2.6em;
     margin: 4em auto 10em;
-    width: 90%;
+    width: 80%;
   }
 }
 </style>

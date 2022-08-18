@@ -7,12 +7,20 @@ import "@/styles/reset.css";
 import "@/styles/normalize.css";
 import NavBarMain from "./components/NavBarMain.vue";
 import EventServices from "./services/EventService";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default {
   name: "App",
   components: {
     NavBarMain,
   },
   created() {
+    AOS.init({
+      delay: 50,
+      easing: "cubic-bezier(0.365, 0.183, 0.153, 0.846)",
+      duration: 600,
+    });
+
     EventServices.getEvents().then((response) => {
       localStorage.setItem(
         "member_count",
@@ -50,19 +58,19 @@ export default {
 
 body {
   font-size: 16px;
-  min-width: 380px;
   margin: 0 auto;
   background-color: var(--dark-blue);
   color: var(--white);
   position: relative;
   scroll-behavior: smooth;
+  overflow-x: hidden !important;
   &::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     background-image: url("@/assets/overlay.png");
-    z-index: -40;
+    z-index: -999;
     opacity: 0.3;
   }
   p,
@@ -88,7 +96,7 @@ body {
 }
 header {
   width: 100%;
-  z-index: 200;
+  z-index: 999 !important;
   position: absolute;
 }
 .btn {
@@ -148,13 +156,14 @@ header {
   &.vip {
     span {
       color: var(--dark-red);
+      font-weight: 600;
     }
     span:nth-child(1) {
       color: var(--white);
     }
   }
   span {
-    font-weight: 400;
+    font-weight: 600;
     font-family: var(--font-heading);
   }
   span:nth-child(1) {
