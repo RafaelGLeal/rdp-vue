@@ -76,6 +76,8 @@ export default {
       position: absolute;
       top: -900%;
       right: -50%;
+      animation: cardIcon 8s linear infinite;
+
       @media (min-width: 600px) {
         right: -30%;
         top: -700%;
@@ -130,7 +132,7 @@ export default {
     padding: 2em 2em 4em 4em;
     position: relative;
     @media (min-width: 1100px) {
-      padding: 2em 8em 4em 6em;
+      padding: 2em 8em 2em 6em;
     }
     &__title {
       font-size: 1.2em;

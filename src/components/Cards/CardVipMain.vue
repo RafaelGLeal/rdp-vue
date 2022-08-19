@@ -74,6 +74,8 @@ export default {
       position: absolute;
       top: -700%;
       right: -50%;
+      animation: cardIcon 12s linear infinite;
+      z-index: 20;
       @media (min-width: 600px) {
         right: -20%;
         top: -400%;
@@ -117,7 +119,7 @@ export default {
     z-index: 1;
     padding: 2em 2em 4em 4em;
     @media (min-width: 1100px) {
-      padding: 2em 8em 4em 6em;
+      padding: 2em 4em 2em 6em;
     }
     &__title {
       font-size: 1.2em;
@@ -138,7 +140,7 @@ export default {
       font-weight: 400;
       font-size: 0.9em;
       max-width: 50ch;
-      line-height: 1.6em;
+      line-height: 1.2em;
     }
     span {
       align-self: flex-start;
