@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar" ref="nav">
     <router-link to="/" class="navbar__brand">
       <img src="@/assets/logo.png" alt="" />
     </router-link>
@@ -21,15 +21,7 @@
 </template>
 
 <script>
-window.onscroll = () => {
-  const navBar = document.querySelector(".navbar");
-  if (document.body > 50 || document.documentElement.scrollTop > 50) {
-    navBar.style.padding = "1em 2em";
-  } else {
-    navBar.style.padding = "2em 2em";
-  }
-};
-import BtnToggleMenu from "../BtnToggleMenu.vue";
+import BtnToggleMenu from "../Buttons/BtnToggleMenu.vue";
 export default {
   name: "NavBarMobile",
   components: {
@@ -45,6 +37,17 @@ export default {
       return (this.active = !this.active);
     },
   },
+
+  mounted() {
+    window.onscroll = () => {
+      const navBar = this.$refs.nav;
+      if (document.body > 50 || document.documentElement.scrollTop > 50) {
+        navBar.classList.add("scroll");
+      } else {
+        navBar.classList.remove("scroll");
+      }
+    };
+  },
 };
 </script>
 
@@ -56,9 +59,13 @@ export default {
   width: 100%;
   height: fit-content;
   position: fixed;
-  padding: 2em;
+  padding: 3em;
   z-index: 999;
   transition: var(--transition);
+  &.scroll {
+    padding: 1.5em;
+    background-color: var(--dark-blue);
+  }
   &__brand {
     width: 70px;
     transform: translateY(7px);

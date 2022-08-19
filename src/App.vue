@@ -34,7 +34,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss">
 :root {
   --dark-blue: #0f171d;
@@ -64,6 +63,7 @@ body {
   position: relative;
   scroll-behavior: smooth;
   overflow-x: hidden !important;
+  max-width: 1600px;
   &::before {
     content: "";
     position: absolute;
@@ -153,6 +153,9 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (min-width: 1100px) {
+    font-size: var(--f-size-lg);
+  }
   &.vip {
     span {
       color: var(--dark-red);

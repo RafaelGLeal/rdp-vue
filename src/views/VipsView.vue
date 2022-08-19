@@ -10,12 +10,12 @@
     </p>
     <CardMain cardName="premium" />
     <CardMain cardName="diamond" />
+    <FooterMain />
   </section>
-  <FooterMain />
 </template>
 <script>
-import FooterMain from "@/components/FooterMain.vue";
-import CardMain from "@/components/CardVipMain.vue";
+import FooterMain from "@/components/Footer/FooterMain.vue";
+import CardMain from "@/components/Cards/CardVipMain.vue";
 export default {
   components: {
     CardMain,
@@ -31,6 +31,7 @@ export default {
   place-items: center;
   overflow: hidden;
   position: relative;
+  z-index: 10;
   &::before {
     content: "";
     position: absolute;
@@ -41,7 +42,19 @@ export default {
     background-size: 30%;
     top: 55vh;
     z-index: -1;
-    opacity: 0.8;
+    opacity: 0.3;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    background: #afafaf;
+    background: -moz-radial-gradient(top right, #d4d4d411, #11060626);
+    background: radial-gradient(to bottom left, #d4d4d411, #11060626);
+    background: -webkit-radial-gradient(top right, #d4d4d411, #11060626);
+    top: 20vh;
+    z-index: -50;
   }
   h3 {
     padding-top: 30vh;
@@ -49,9 +62,17 @@ export default {
   p {
     font-weight: 500;
     text-align: center;
-    line-height: 2.6em;
-    margin: 4em auto 10em;
+    line-height: 2.1em;
+    margin: 4em auto 8em;
     width: 80%;
+  }
+  @media (min-width: 1000px) {
+    p {
+      max-width: 70ch;
+    }
+    h3 {
+      padding-top: 40vh;
+    }
   }
 }
 </style>

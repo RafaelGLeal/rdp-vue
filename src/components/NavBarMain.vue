@@ -20,6 +20,7 @@ export default {
 
   setup() {
     const isLargeScreen = useMediaQuery("(min-width: 950px)");
+
     return {
       isLargeScreen,
     };

@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import BtnPrimary from "@/components/BtnPrimary.vue";
-import FooterMain from "@/components/FooterMain.vue";
+import BtnPrimary from "@/components/Buttons/BtnPrimary.vue";
+import FooterMain from "@/components/Footer/FooterMain.vue";
 export default {
   name: "HomeView",
   components: { FooterMain, BtnPrimary },
@@ -72,11 +72,6 @@ export default {
     z-index: -40 !important;
     opacity: 0.3;
   }
-  @media (min-width: 680px) {
-    &::before {
-      background-image: url(@/assets/bgHome.png);
-    }
-  }
   &::after {
     content: "";
     position: absolute;
@@ -96,6 +91,17 @@ export default {
     margin-bottom: 1em;
     transform: translateY(-2em);
     font-size: var(--f-size-sm);
+  }
+  @media (min-width: 680px) {
+    h1 {
+      font-size: 8em;
+    }
+    h2 {
+      transform: translateY(-3em);
+    }
+    &::before {
+      background-image: url(@/assets/bgHome.png);
+    }
   }
 }
 .stats {
@@ -159,9 +165,16 @@ export default {
   p {
     font-weight: 500;
     text-align: center;
-    line-height: 2.6em;
+    line-height: 2.1em;
     margin-bottom: 3em;
     width: 80%;
+  }
+  @media (min-width: 1100px) {
+    &::before {
+      bottom: 0;
+      top: 0%;
+      background-size: 20%;
+    }
   }
 }
 main {
