@@ -37,7 +37,7 @@ export default {
     return {
       king: {
         discord: "https://discord.com/users/649793871693479956",
-        instagram: "https://www.google.com",
+        instagram: "https://www.instagram.com/kingninja_oficial/",
       },
       imp: {
         discord: "https://discord.com/users/255015900363620352",
@@ -75,6 +75,7 @@ export default {
   max-width: 80%;
   margin: 4em 0;
   border-top-right-radius: 1px;
+
   .opac-title {
     position: absolute;
     font-size: 7em;
@@ -83,6 +84,7 @@ export default {
     top: -0.6em;
     left: -0.3em;
   }
+
   &-title span {
     text-transform: uppercase;
     font-weight: 600;
@@ -90,8 +92,10 @@ export default {
     font-size: var(--f-size-sm);
     font-family: var(--font-heading);
   }
+
   &-title {
     position: relative;
+
     &::before {
       content: "";
       position: absolute;
@@ -104,6 +108,7 @@ export default {
       z-index: 1;
       top: -70px;
     }
+
     &.imp {
       &::before {
         background-image: url(@/assets/imp-card.png);
@@ -127,10 +132,12 @@ export default {
     padding: 2em;
     position: relative;
     z-index: 100;
+
     img {
       width: 200px;
       height: 250px;
     }
+
     &__icons {
       align-self: flex-start;
       display: flex;
@@ -143,12 +150,21 @@ export default {
         display: flex;
         align-items: center;
         gap: 0.5em;
+
         i {
           font-size: 1.2em;
         }
+
         span {
           color: var(--white);
           text-transform: capitalize;
+          transition: var(--transition);
+        }
+
+        &:hover span {
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          transition: var(--transition);
         }
       }
     }

@@ -5,10 +5,11 @@
 <script>
 import "@/styles/reset.css";
 import "@/styles/normalize.css";
-import NavBarMain from "./components/NavBarMain.vue";
-import EventServices from "./services/EventService";
+import NavBarMain from "@/components/Navbar/NavBarMain.vue";
+import EventServices from "@/services/EventService";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 export default {
   name: "App",
   components: {
@@ -20,7 +21,6 @@ export default {
       easing: "cubic-bezier(0.365, 0.183, 0.153, 0.846)",
       duration: 600,
     });
-
     EventServices.getEvents().then((response) => {
       localStorage.setItem(
         "member_count",
@@ -64,15 +64,17 @@ body {
   scroll-behavior: smooth;
   overflow-x: hidden !important;
   max-width: 1600px;
+
   &::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     background-image: url("@/assets/overlay.png");
-    z-index: -999;
+    z-index: -100;
     opacity: 0.3;
   }
+
   p,
   a,
   span,
@@ -82,6 +84,7 @@ body {
     font-weight: 300;
     text-decoration: none;
   }
+
   h1,
   h2,
   h3,
@@ -90,6 +93,7 @@ body {
   h6 {
     font-family: var(--font-heading);
   }
+
   i {
     color: var(--white);
   }
@@ -109,6 +113,7 @@ header {
   transition: var(--transition);
   overflow: hidden;
   background: transparent;
+
   span {
     letter-spacing: 1px;
     font-weight: 500;
@@ -117,15 +122,18 @@ header {
     margin-right: 0.3em;
     transition: var(--transition);
   }
+
   .bx-arrow-back {
-    transform: rotate(-140deg) translateX(-2px);
+    transform: rotate(-140deg);
     transition: var(--transition);
   }
+
   span:nth-child(2) {
     position: absolute;
     transform: translateY(-200%);
     transition: var(--transition);
   }
+
   &:hover {
     background: #afafaf;
     background: -moz-radial-gradient(top right, #d4d4d411, #11060626);
@@ -138,10 +146,12 @@ header {
       transform: translateY(0%);
       transition: var(--transition);
     }
+
     span:nth-child(1) {
       transform: translateY(200%);
       transition: var(--transition);
     }
+
     .bx-arrow-back {
       transform: rotate(-180deg) translateX(-2px);
       transition: var(--transition);
@@ -153,6 +163,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   @media (min-width: 1100px) {
     font-size: var(--f-size-lg);
   }
@@ -161,29 +172,22 @@ header {
       color: var(--dark-red);
       font-weight: 600;
     }
+
     span:nth-child(1) {
       color: var(--white);
     }
   }
+
   span {
     font-weight: 600;
     font-family: var(--font-heading);
   }
+
   span:nth-child(1) {
     color: var(--dark-red);
   }
 }
-.v-enter-active,
-.v-leave-active {
-  transform: translateX(0px);
-  transition: all 0.5s ease;
-}
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  transform: translateX(-200px);
-}
 @keyframes cardIcon {
   0% {
     transform: translateX(-2px);

@@ -97,7 +97,15 @@ export default {
     font-size: var(--f-size-sm);
     font-family: var(--font-heading);
     position: relative;
-
+    &::before {
+      content: "da perdição";
+      width: 50%;
+      height: 100%;
+      right: -50%;
+      font-size: 0.5em;
+      position: absolute;
+      font-weight: 900;
+    }
     @media (min-width: 1100px) {
       font-size: var(--f-size-md);
     }
@@ -119,8 +127,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2em 8em 4em 6em;
+    padding: 2em 2em 4em 4em;
     position: relative;
+    @media (min-width: 1100px) {
+      padding: 2em 8em 4em 6em;
+    }
     &__title {
       font-size: 1.2em;
       margin: 1em 0 2em;

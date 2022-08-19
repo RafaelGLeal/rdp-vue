@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import BtnToggleMenu from "../Buttons/BtnToggleMenu.vue";
+import BtnToggleMenu from "@/components/Buttons/BtnToggleMenu.vue";
 export default {
   name: "NavBarMobile",
   components: {
@@ -37,7 +37,6 @@ export default {
       return (this.active = !this.active);
     },
   },
-
   mounted() {
     window.onscroll = () => {
       const navBar = this.$refs.nav;
@@ -60,20 +59,24 @@ export default {
   height: fit-content;
   position: fixed;
   padding: 3em;
-  z-index: 999;
+  z-index: 998;
   transition: var(--transition);
+
   &.scroll {
     padding: 1.5em;
     background-color: var(--dark-blue);
   }
+
   &__brand {
     width: 70px;
     transform: translateY(7px);
     z-index: 40;
+
     img {
       max-width: 100%;
     }
   }
+
   &__menu {
     align-items: center;
     position: absolute;
@@ -85,6 +88,7 @@ export default {
     padding: 2em;
     flex-direction: column;
     transition: var(--transition);
+
     &::before {
       content: "";
       position: absolute;
@@ -94,6 +98,7 @@ export default {
       top: -50%;
       z-index: -3;
     }
+
     &.disabled {
       visibility: hidden;
       transform: translateX(-100%);
@@ -104,6 +109,7 @@ export default {
   a {
     color: var(--white);
     font-size: 2em;
+
     &.router-link-exact-active {
       text-decoration: underline;
     }

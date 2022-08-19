@@ -1,9 +1,9 @@
 <template>
   <main>
     <section class="hero">
-      <h1>RDP</h1>
+      <h1 data-aos="fade-up" data-aos-delay="400">RDP</h1>
       <h2>reino da perdição</h2>
-      <BtnPrimary name="Descobrir" icon="bx bx-arrow-back" />
+      <BtnPrimary name="Descobrir" icon="bx bx-arrow-back" :useRoute="true" />
     </section>
     <section class="stats">
       <div class="stats-container">
@@ -29,7 +29,12 @@
         momentos de lazer aos membros com entretenimento, interações, torneios
         de jogos e muita treta!
       </p>
-      <BtnPrimary name="Junte-se" icon="bx bxl-discord-alt" />
+      <BtnPrimary
+        name="Junte-se"
+        icon="bx bxl-discord-alt"
+        href="https://discord.gg/RDP"
+        :useRoute="false"
+      />
     </section>
   </main>
   <FooterMain />
@@ -38,14 +43,21 @@
 <script>
 import BtnPrimary from "@/components/Buttons/BtnPrimary.vue";
 import FooterMain from "@/components/Footer/FooterMain.vue";
+
 export default {
   name: "HomeView",
   components: { FooterMain, BtnPrimary },
   data() {
     return {
-      member_count: window.localStorage.getItem("member_count"),
-      presence_count: window.localStorage.getItem("presence_count"),
+      member_count: 15000,
+      presence_count: 10000,
     };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.member_count = window.localStorage.getItem("member_count");
+      this.presence_count = window.localStorage.getItem("presence_count");
+    }, 1000);
   },
 };
 </script>
@@ -61,6 +73,7 @@ export default {
   z-index: 1;
   overflow: hidden;
   margin: 0 auto;
+
   &::before {
     content: "";
     position: absolute;
@@ -72,6 +85,7 @@ export default {
     z-index: -40 !important;
     opacity: 0.3;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -82,28 +96,35 @@ export default {
     z-index: -40;
     filter: blur(30px);
   }
+
   h1 {
     font-size: 6em;
     margin-top: 40vh;
     font-weight: 600;
   }
+
   h2 {
     margin-bottom: 1em;
     transform: translateY(-2em);
     font-size: var(--f-size-sm);
   }
+
   @media (min-width: 680px) {
     h1 {
       font-size: 8em;
     }
+
     h2 {
-      transform: translateY(-3em);
+      transform: translateY(-4em);
     }
+
     &::before {
       background-image: url(@/assets/bgHome.png);
+      opacity: 0.4;
     }
   }
 }
+
 .stats {
   max-width: 100%;
   margin: 3em auto 0;
@@ -111,6 +132,7 @@ export default {
   align-items: center;
   flex-direction: column;
   position: relative;
+
   &::before {
     content: "";
     position: absolute;
@@ -124,6 +146,7 @@ export default {
     bottom: 30%;
     z-index: -100;
   }
+
   &-container {
     margin: 0 auto;
     display: flex;
@@ -134,9 +157,10 @@ export default {
     max-width: 100%;
     @media (min-width: 840px) {
       flex-direction: row;
-      gap: 5em;
+      gap: 12em;
       justify-content: space-around;
     }
+
     &__item {
       flex: 1;
       width: 100%;
@@ -158,10 +182,12 @@ export default {
       }
     }
   }
+
   .section-title {
     margin: 4em 0 2em;
     overflow: hidden;
   }
+
   p {
     font-weight: 500;
     text-align: center;
@@ -169,6 +195,7 @@ export default {
     margin-bottom: 3em;
     width: 80%;
   }
+
   @media (min-width: 1100px) {
     &::before {
       bottom: 0;
@@ -177,6 +204,7 @@ export default {
     }
   }
 }
+
 main {
   margin-bottom: 6em;
 }

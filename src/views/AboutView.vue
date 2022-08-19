@@ -10,20 +10,26 @@
       jogos e muita treta! Consulte aba de vips e cargos para contúdos
       exclusivos.
     </p>
-    <BtnPrimary name="Junte-se" icon="bx bxl-discord-alt" />
+    <BtnPrimary
+      name="Junte-se"
+      icon="bx bxl-discord-alt"
+      href="https://discord.gg/RDP"
+      useRoute="false"
+    />
     <h5>Staff</h5>
     <div class="card-wrapper">
       <CardProfile profileName="king" />
       <CardProfile profileName="imp" />
     </div>
+    <FooterMain />
   </section>
-  <FooterMain />
 </template>
 
 <script>
 import FooterMain from "@/components/Footer/FooterMain.vue";
 import CardProfile from "@/components/Cards/CardProfileMain.vue";
 import BtnPrimary from "@/components/Buttons/BtnPrimary.vue";
+
 export default {
   components: {
     FooterMain,
@@ -40,12 +46,12 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding-bottom: 5em;
+
   &::before {
     content: "";
     position: absolute;
     width: 90%;
-    height: 90%;
+    height: 100%;
     background: #afafaf;
     background: -moz-radial-gradient(top right, #d4d4d411, #11060626);
     background: radial-gradient(to bottom left, #d4d4d411, #11060626);
@@ -56,6 +62,7 @@ export default {
   h3 {
     padding-top: 30vh;
   }
+
   p {
     font-weight: 500;
     text-align: center;
@@ -64,12 +71,14 @@ export default {
     width: 80%;
     position: relative;
   }
+
   h5 {
     width: 70%;
     font-size: var(--f-size-md);
     text-align: center;
     margin: 3em 0 2em;
   }
+
   .card-wrapper {
     width: 100%;
     display: flex;
@@ -78,13 +87,16 @@ export default {
     justify-content: center;
     gap: 5em;
   }
+
   @media (min-width: 1000px) {
     p {
       max-width: 70ch;
     }
+
     h3 {
       padding-top: 40vh;
     }
+
     .card-wrapper {
       flex-direction: row;
       gap: 15em;

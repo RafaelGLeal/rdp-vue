@@ -9,18 +9,17 @@
 
 <script>
 import { useMediaQuery } from "@vueuse/core";
-import NavBarMobile from "./Navbar/NavBarMobile.vue";
-import NavBarDesktop from "./Navbar/NavBarDesktop.vue";
+import NavBarMobile from "@/components/Navbar/NavBarMobile.vue";
+import NavBarDesktop from "@/components/Navbar/NavBarDesktop.vue";
+
 export default {
   name: "NavBar",
   components: {
     NavBarDesktop,
     NavBarMobile,
   },
-
   setup() {
     const isLargeScreen = useMediaQuery("(min-width: 950px)");
-
     return {
       isLargeScreen,
     };

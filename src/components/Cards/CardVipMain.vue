@@ -113,9 +113,12 @@ export default {
     border: 1px solid #afafaf31;
     flex-direction: column;
     align-items: center;
-    padding: 2em 4em 4em 6em;
     position: relative;
     z-index: 1;
+    padding: 2em 2em 4em 4em;
+    @media (min-width: 1100px) {
+      padding: 2em 8em 4em 6em;
+    }
     &__title {
       font-size: 1.2em;
       align-self: flex-start;

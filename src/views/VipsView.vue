@@ -13,9 +13,11 @@
     <FooterMain />
   </section>
 </template>
+
 <script>
 import FooterMain from "@/components/Footer/FooterMain.vue";
 import CardMain from "@/components/Cards/CardVipMain.vue";
+
 export default {
   components: {
     CardMain,
@@ -23,6 +25,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 .vips {
   max-width: 100%;
@@ -32,6 +35,7 @@ export default {
   overflow: hidden;
   position: relative;
   z-index: 10;
+
   &::before {
     content: "";
     position: absolute;
@@ -44,6 +48,7 @@ export default {
     z-index: -1;
     opacity: 0.3;
   }
+
   &::after {
     content: "";
     position: absolute;
@@ -56,9 +61,11 @@ export default {
     top: 20vh;
     z-index: -50;
   }
+
   h3 {
     padding-top: 30vh;
   }
+
   p {
     font-weight: 500;
     text-align: center;
@@ -66,10 +73,12 @@ export default {
     margin: 4em auto 8em;
     width: 80%;
   }
+
   @media (min-width: 1000px) {
     p {
       max-width: 70ch;
     }
+
     h3 {
       padding-top: 40vh;
     }

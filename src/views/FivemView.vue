@@ -9,19 +9,29 @@
       pronta pra novas aventuras. Entre agora mesmo no nosso servidor e desfrute
       de mais um lugar para a Perdição.
     </p>
-    <img src="@/assets/angelFivem.png" alt="" class="angel-bg" />
+    <img
+      src="@/assets/angelFivem.png"
+      alt="angel with gun artwork"
+      class="angel-bg"
+    />
     <h5 data-aos="zoom-fade-up" data-aos-delay="200" data-aos-duration="600">
       rdp city disponível agora
     </h5>
-    <ButtonPrimary name="Acessar" icon="bx bxl-discord-alt" />
+    <ButtonPrimary
+      name="Acessar"
+      icon="bx bxl-discord-alt"
+      href="https://discord.gg/rdprp "
+      :useRouter="false"
+    />
     <footer>
-      <img src="@/assets/cityFivem.png" alt="" />
+      <img src="@/assets/cityFivem.png" alt="white city artwork" />
     </footer>
   </section>
 </template>
 
 <script>
 import ButtonPrimary from "@/components/Buttons/BtnPrimary.vue";
+
 export default {
   components: {
     ButtonPrimary,
@@ -36,6 +46,7 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
+
   &::before {
     content: "";
     position: absolute;
@@ -47,6 +58,7 @@ export default {
     background: -webkit-radial-gradient(top right, #d4d4d411, #11060626);
     top: 20vh;
   }
+
   .angel-bg {
     position: absolute;
     max-width: 50%;
@@ -54,9 +66,11 @@ export default {
     opacity: 0.4;
     left: 0%;
   }
+
   h3 {
     padding-top: 30vh;
   }
+
   p {
     font-weight: 500;
     text-align: center;
@@ -65,6 +79,7 @@ export default {
     width: 80%;
     position: relative;
   }
+
   h5 {
     width: 70%;
     margin: 0 auto;
@@ -72,13 +87,16 @@ export default {
     text-align: center;
     margin: 2em 0 2em;
   }
+
   @media (min-width: 1000px) {
     p {
       max-width: 70ch;
     }
+
     h3 {
       padding-top: 40vh;
     }
+
     .angel-bg {
       top: 40%;
       max-width: 30%;
@@ -96,9 +114,11 @@ export default {
     align-items: center;
     position: relative;
     padding-top: 5em;
+
     img {
       max-width: 100%;
     }
+
     &::before {
       content: "";
       position: absolute;
@@ -108,6 +128,7 @@ export default {
       opacity: 0.5;
       bottom: 0;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -120,6 +141,7 @@ export default {
       filter: blur(90px);
       background-color: var(--dark-red);
     }
+
     @media (min-width: 1000px) {
       &::after {
         opacity: 0.5;
