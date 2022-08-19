@@ -120,7 +120,7 @@ export default {
 
     &::before {
       background-image: url(@/assets/bgHome.png);
-      opacity: 0.4;
+      opacity: 0.3;
     }
   }
 }
