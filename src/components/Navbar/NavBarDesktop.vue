@@ -57,7 +57,7 @@ export default {
 
   &.scroll {
     padding: 1.5em 2.5em;
-    background-color: var(--dark-blue);
+    background-color: #0f171dc7;
   }
 
   &__brand {
